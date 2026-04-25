@@ -1,5 +1,6 @@
 import atexit
 import json
+import os
 import logging
 import re
 import ssl
@@ -51,6 +52,8 @@ mass_mcp = FastMCP(
         "call_api to fetch the data. Use store_as + query_data for multi-step analysis. "
         "Covers: equities, options, ETFs, indices, FX, crypto — real-time and historical."
     ),
+    host=os.environ.get("HOST", "127.0.0.1"),
+    port=int(os.environ.get("PORT", "8000")),
 )
 
 METADATA_KEYS = {
@@ -537,3 +540,4 @@ def run(transport: Literal["stdio", "sse", "streamable-http"] = "stdio") -> None
     fetched.
     """
     mass_mcp.run(transport)
+
