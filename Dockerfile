@@ -16,4 +16,4 @@ RUN groupadd --gid 1000 mcp && \
     useradd --uid 1000 --gid 1000 --create-home mcp
 USER mcp
 
-ENTRYPOINT ["uv", "run", "./entrypoint.py"]
+ENTRYPOINT ["python", "/app/entrypoint.py"]
